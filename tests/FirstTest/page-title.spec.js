@@ -10,9 +10,11 @@
 const { test, expect } = require('@playwright/test');
 
 test('Check viewport size', async ({ page }) => {
-  await page.goto('https://example.com');
-
+  await page.goto('https://www.google.com', {
+    waitUntil: 'domcontentloaded',
+  });
   console.log('Viewport:', page.viewportSize());
-
+ 
+  await expect(page).toHaveTitle(/google/i);
   //await page.pause();
 });
