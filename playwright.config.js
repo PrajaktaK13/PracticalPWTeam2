@@ -25,35 +25,47 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
 
-  timeout: 30000,
+  timeout: 1000000,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: 'http://google.com',
     headless: false,
-    viewport: { width: 1280, height: 720 },
-    actionTimeout: 10000,
+    viewport: null,
+    ignoreHTTPSErrors: true,
+    permissions: ['geolocation'],
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+
+    browserName: 'chromium',
+    launchOptions: {
+      args: ['--start-maximized']
+    }
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+    name: 'chromium',
+    use: {
+        browserName: 'chromium',
+        viewport: null,
+        launchOptions: {
+            args: ['--start-maximized']
+        }
+    }
+}
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {

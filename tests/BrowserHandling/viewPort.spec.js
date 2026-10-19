@@ -15,5 +15,6 @@ test('Check desktop viewport', async ({ page }) => {
 
   console.log(page.viewportSize());
 
-  await expect(page).toHaveTitle(/amazon.in/);
+  await expect(page).toHaveTitle(/Online Shopping site in India: Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in/);
 });
+
