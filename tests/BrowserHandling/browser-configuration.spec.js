@@ -140,3 +140,5 @@ Remember the key difference:
 - Check permission → verify the permission state.
 - Test functionality → verify that the feature actually works.
 */
+
+// to leran camera with args
