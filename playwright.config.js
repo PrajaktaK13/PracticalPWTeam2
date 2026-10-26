@@ -30,7 +30,7 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: 'http://google.com',
-    headless: false,
+    headless: true,
     viewport: null,
     ignoreHTTPSErrors: true,
     permissions: ['geolocation'],
