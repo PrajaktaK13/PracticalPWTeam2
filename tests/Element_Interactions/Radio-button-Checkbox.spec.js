@@ -41,26 +41,43 @@ test('Radio button Checkbox test', async ({ page }) => {
     await femaleLabel.click();
  
     await expect(femaleRadio).toBeChecked();
+
+    const sportsCheck= page.locator("label[class='custom-control-label']").nth(3);
+
+    await sportsCheck.click();
+
+    await expect(sportsCheck).toBeChecked();   
+
+    await sportsCheck.uncheck();
+
+    console.log(await sportsCheck.isChecked());
+
+    const countChecked= page.locator("label[class='custom-control-label']").count();
+
+    console.log(await countChecked);
 });
 
 
-test('Radio button Checkbox test1', async ({ page }) => {
+// test('Radio button Checkbox test1', async ({ page }) => {
 
-    await page.goto(
-        'https://www.playwrightautomation.com/practice.html?utm_source=chatgpt.com'
-    );
+//     await page.goto(
+//         'https://www.playwrightautomation.com/practice.html?utm_source=chatgpt.com'
+//     );
 
-       // Locate the second gender radio button
-    const gender= await page.locator("#gender-male");
+//        // Locate the second gender radio button
+//     const gender= await page.locator("#gender-male");
 
-    console.log('Count:', await gender.count());
-    console.log('Visible:', await gender.isVisible());
-    console.log('Enabled:', await gender.isEnabled());
+//     console.log('Count:', await gender.count());
+//     console.log('Visible:', await gender.isVisible());
+//     console.log('Enabled:', await gender.isEnabled());
 
-    // Select the radio button
-    await gender.check();
+//     // Select the radio button
+//     await gender.check();
 
-    // Verify that it is selected
-    await expect(gender).toBeChecked();
+//     // Verify that it is selected
+//     await expect(gender).toBeChecked();
 
-});
+// });
+
+
+
