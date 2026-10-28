@@ -15,6 +15,7 @@ console.log(isVisible);
 
 isVisible() checks the current state and returns true or false without automatically retrying.
 Remember this difference
+
 Auto-retrying	                                            sNon-retrying
 Keeps checking until success or timeout	            Checks the current state
 Example: await expect(locator).toBeVisible()	    Example: await locator.isVisible()
@@ -30,10 +31,15 @@ Imagine you open a login page. The Login button takes 3 seconds to appear becaus
 
 If Playwright checks immediately, the button might not be visible yet. 
 We need a way to wait for the expected condition.
+
+AutoRetrying:         toBeVisible(), toHaveText(), toHaveURL(), toHaveTitle(), toHaveCount()
+Non-retrying methods: isVisible(), isEnabled(), isDisabled(), count(), textContent(), inputValue()
 */
 
 // Auto-retrying assertions
 // Definition: An auto-retrying assertion repeatedly checks a condition until it passes or the timeout is reached.
+
+
 
 const { test, expect } = require('@playwright/test');
 

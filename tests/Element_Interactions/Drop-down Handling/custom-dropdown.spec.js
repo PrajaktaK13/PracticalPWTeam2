@@ -21,7 +21,7 @@ const {test, expect}= require('@playwright/test');
 test('Custom dropDown test', async ({page})=>{
     await page.goto('https://demoqa.com/select-menu');
     
-    const dropDown = page.locator("div[class='css-19bb58m']").first();
+    const dropDown = page.locator("#react-select-2-input");
 
     await dropDown.click();
 
@@ -29,13 +29,38 @@ test('Custom dropDown test', async ({page})=>{
 
     await page.getByText('Group 1, option 1', { exact: true }).click();
 
-    const dropdown= page.locator("div[class='css-19bb58m']").first();
+    const dropdown= page.locator("div[class='css-hlgwow']").first();
 
     await page.pause();
 
-    await expect(dropDown).toHaveText('Group 1, option 1');    
+    await expect(dropdown).toHaveText('Group 1, option 1');   
+    
+    console.log(await dropdown.textContent());
     
 });
+
+// using extend  
+
+expect.extend({
+    toBeWelcomeMessage(received) {
+        const pass = received.includes('Prajakta');
+
+        return {
+            pass: pass,
+            message: () =>
+                `Expected "${received}" to contain Prajakta`
+        };
+    }
+});
+
+test('Verify welcome message using custom matcher', async () => {
+    const message = 'Welcome, Prajakta!';
+
+    expect(message).toBeWelcomeMessage();
+
+    console.log('Custom matcher passed');
+});
+
 
 /*
 Bootstrap dropdown:
@@ -51,7 +76,7 @@ Playwright: usually click() the button, then click() the option.s
 test('Bootstrap dropdown', async ({page})=>{
     await page.goto("https://getbootstrap.com/docs/5.3/components/dropdowns/");
 
-    const dropDownBtn= page.locator("div.dropdown>button.btn").nth(0);
+    const dropDownBtn= page.locator("div.dropdown>button.btn").nth(0);  // should not used
 
     await dropDownBtn.click();
 

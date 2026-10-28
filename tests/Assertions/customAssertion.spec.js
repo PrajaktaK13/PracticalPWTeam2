@@ -28,3 +28,5 @@ test('Check welcome message', async ({ page }) => {
 
     console.log('Custom assertion passed');
 });
+
+// with extend

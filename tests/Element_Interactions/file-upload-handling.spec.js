@@ -28,3 +28,20 @@ test('File upload test', async ({ page }) => {
     await expect(page.locator('h3')).toHaveText('File Uploaded!');
     await expect(page.locator('#uploaded-files')).toHaveText('sample.txt');
 });
+
+// multiple pages.
+
+
+test('Multiple File upload test', async ({ page }) => {
+    await page.goto('https://playwrightlab.github.io/');
+
+const fileInput = page.locator('#uploadBrowseLabel');
+
+const filePaths = [
+    'D:\\Playwright_Trainning\\sample.txt',
+    'D:\\Playwright_Trainning\\sample1.txt',    
+];
+
+await fileInput.setInputFiles(filePaths);
+await expect(page.locator('.file-item')).toHaveCount(2);
+});
