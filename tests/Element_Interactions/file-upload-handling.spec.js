@@ -29,7 +29,7 @@ test('File upload test', async ({ page }) => {
     await expect(page.locator('#uploaded-files')).toHaveText('sample.txt');
 });
 
-// multiple pages.
+// multiple files.
 
 
 test('Multiple File upload test', async ({ page }) => {
@@ -45,3 +45,5 @@ const filePaths = [
 await fileInput.setInputFiles(filePaths);
 await expect(page.locator('.file-item')).toHaveCount(2);
 });
+
+// toHaveText and toHaveValue

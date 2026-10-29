@@ -22,7 +22,7 @@ console.log(str);
 
 // Move all zeros to end
 
-let arr= [1, 2, 0, 3, 4, 0, 5, 6];
+let arr= [1, 2, 0, 3, 4, 0, 5, 6, 0, 7, 8, 0];
 let resultArr=[];
 for(let i=arr.length-1; i>=0; i--){
   if(arr[i]!==0){
