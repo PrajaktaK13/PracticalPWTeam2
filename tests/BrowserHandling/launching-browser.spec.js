@@ -25,24 +25,41 @@ you can test with in Playwright. They are not all browser names.*/
 
 const { test, chromium, firefox, webkit } = require('@playwright/test');
 
-// test('Verify page title', async ({ page }) => {
-//   await page.goto('/');
-
-//   await expect(page).toHaveTitle(/Google/);
-// });
-
 // can check the browser option in test itself.
 
 test('Launch Firefox directly', async () => {
   const browser = await firefox.launch({ headless: false });
   const page = await browser.newPage();
 
-  await page.goto('https://example.com');
+  await page.goto('https://google.com');
 
   console.log(await page.title());
 
   await browser.close();
 });
+
+test('Launch Chromium directly',async() => {
+  const browser = await chromium.launch({ headless: false });
+
+  const page = await browser.newPage();
+
+  await page.goto("https://www.gmail.com");
+
+  await browser.close();
+})
+
+
+test('Launch webkit directly',async ()=>{
+  const browser = await webkit.launch();
+
+   const context = await browser.newContext();
+
+  const page = await context.newPage();
+
+  await page.goto("https://www.gmail.com");
+
+  await browser.close();
+})
 
 /*
 Browser	Command:

@@ -30,4 +30,14 @@ test('explicit wait test', async({page})=>{
     });
 
     await expect(message).toBeVisible();
+    //await expect(message).toBeVisible({ timeout: 5000 });
 });
+
+/*
+Quick comparison
+Method	                                      What does it wait for?
+locator.waitFor()	                       A particular element state
+expect(locator).toBeVisible()	              An expected UI condition
+page.waitForSelector()	                 An element matching a selector
+page.waitForResponse()	                   A matching network response
+*/

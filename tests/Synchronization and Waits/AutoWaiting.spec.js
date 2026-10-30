@@ -1,6 +1,7 @@
 /*
 What is synchronization?
-   Synchronization means making sure your test waits until the web page or element is ready before performing an action.
+   Synchronization means making sure your test waits until the web page or element is ready before 
+   performing an action.
 
 Imagine you are testing a login page.
 1. You open the login page.
@@ -14,7 +15,8 @@ What is auto-waiting in Playwright?
    Playwright's auto-waiting mechanism automatically waits for the required conditions
  to be satisfied before performing supported actions on elements.
 
- Playwright automatically checks whether the button is ready to be clicked. It doesn't immediately click a button that is still hidden or disabled.
+ Playwright automatically checks whether the button is ready to be clicked. It doesn't immediately 
+ click a button that is still hidden or disabled.
 
 For a click action, Playwright checks conditions such as:
 
@@ -62,4 +64,4 @@ Built into supported actions	                            Uses waitForTimeout
 */
 
 
-// Check theory, click() and fill()
+// Check theory.

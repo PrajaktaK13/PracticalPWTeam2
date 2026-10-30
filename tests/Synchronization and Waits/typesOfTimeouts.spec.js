@@ -24,18 +24,29 @@ Remember these five questions:
 */
 const {test, expect}= require ('@playwright/test');
 
-test.setTimeout(60000);
+test.setTimeout(60000);                                  // test timeout
 
 test('Types of TimeOuts', async ({ page }) => {
     await page.goto('https://the-internet.herokuapp.com/dynamic_controls',{
-         timeout: 15000
+         timeout: 15000                                                       // navigation timeout
     });
 
     const removeButton = page.getByRole('button', { name: 'Remove' });
     const addButton = page.getByRole('button', { name: 'Add' });
 
-    await expect(removeButton).toBeVisible({ timeout: 10000 });
-    await removeButton.click({ timeout: 10000 });
+    await expect(removeButton).toBeVisible({ timeout: 10000 });  // expect timeout
+    await removeButton.click({ timeout: 10000 });                // action timeout
 
     
 });
+/*
+Test Timeout vs Global Timeout:
+
+Feature	                 Test Timeout	                                        Global Timeout
+Meaning         	Maximum time allowed for one test to finish	    Maximum time allowed for the entire test run
+Applies to	                Each individual test	                All tests running in that Playwright command
+Config option	               timeout	                                          globalTimeout
+If time expires	T         hat test fails due to timeout	                  The entire test run is stopped
+Default	                         30 seconds	                                    0 — no global limit
+
+*/
