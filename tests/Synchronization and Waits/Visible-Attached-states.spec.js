@@ -59,3 +59,4 @@ test('visible and attached test', async ({ page }) => {
     // The old Remove locator should no longer match
     await expect(removeButton).toHaveCount(0);
 });
+

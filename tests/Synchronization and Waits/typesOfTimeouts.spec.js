@@ -42,7 +42,7 @@ test('Types of TimeOuts', async ({ page }) => {
 /*
 Test Timeout vs Global Timeout:
 
-Feature	                 Test Timeout	                                        Global Timeout
+Feature	                    Test Timeout	                                        Global Timeout
 Meaning         	Maximum time allowed for one test to finish	    Maximum time allowed for the entire test run
 Applies to	                Each individual test	                All tests running in that Playwright command
 Config option	               timeout	                                          globalTimeout

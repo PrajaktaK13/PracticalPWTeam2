@@ -241,3 +241,61 @@ for(i=0, j=arr6.length-1; i<j; i++,j--){
   arr6[j]=temp;;
 }
 console.log(arr6);
+
+// Finding the leaders
+
+let arr7 = [16, 17, 4, 3, 5, 2];
+let result7=[];
+let maxRight = -Infinity;
+
+for(let i=arr7.length-1; i>=0; i--){ 
+  if(arr7[i]>maxRight){
+  maxRight=arr7[i];
+  result7.unshift(arr7[i]);
+  }
+}
+
+console.log(result7);
+
+
+// Find highest difference
+let arr8 = [2, 3, 10, 6, 4, 8, 1];
+
+let minValue = arr8[0];
+let maxDiff = -Infinity;
+
+for (let i = 1; i < arr8.length; i++) {
+
+    if (arr8[i] - minValue > maxDiff) {
+        maxDiff = arr8[i] - minValue;
+    }
+
+    if (arr8[i] < minValue) {
+        minValue = arr8[i];
+    }
+}
+
+console.log(maxDiff);
+
+
+// longest onsecutive sequence
+
+let arr9 = [1, 2, 2, 4, 6, 5, 7, 5];
+let count9=0;
+let maxCount=0;
+let current;
+
+for(let i=0; i<arr9.length; i++){
+  count9=1;
+  current= arr9[i];
+  while(arr9.includes(current+1)){
+    count9++;
+    current++;
+  }
+  if(count9>maxCount){
+  maxCount=count9;
+}  
+}
+console.log(maxCount);
+
+// codechef, leetcode. DSA problems with QA Background.
