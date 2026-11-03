@@ -39,17 +39,17 @@ test('Multiple frame navigation', async ({ page }) => {
        
     });
 
-    // const frame1 = allFrames[1];
+     const frame1 = allFrames[1];
 
     // navigate frame to oter url
-    // await frame1.goto('https://example.com');
+    await frame1.goto('https://example.com');
 
-    // console.log('Current frame URL:', frame1.url());
+    console.log('Current frame URL:', frame1.url());
 
-    // wait for navigation
-    // await frame1.waitForURL('https://example.com');
+    //wait for navigation
+    await frame1.waitForURL('https://example.com');
 
-    // console.log('Frame navigated successfully!');
+    console.log('Frame navigated successfully!');
 
 // for (const frame of allFrames) {
 
