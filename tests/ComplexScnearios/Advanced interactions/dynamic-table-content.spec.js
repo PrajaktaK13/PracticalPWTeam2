@@ -87,3 +87,5 @@ test('Dyanamic table content', async ({ page }) => {
 });
 
 // bottom text should be asserted.
+
+// check the value

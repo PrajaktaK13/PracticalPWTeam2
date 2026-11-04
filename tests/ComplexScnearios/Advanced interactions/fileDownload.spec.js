@@ -40,3 +40,5 @@ test('Handle file download', async ({ page }) => {
     await download.saveAs('D:\\Playwright_Trainning\\downloads\\sampleFile.jpeg');
 
 });
+
+// check with forword slash.
