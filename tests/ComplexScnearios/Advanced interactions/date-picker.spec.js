@@ -29,12 +29,12 @@ Month navigation	             Browser handles it	                        We auto
 Playwright difficulty	             Easier	                                More involved */
 
 
+const { test, expect } = require('@playwright/test');
+
+const {selectDate, selectTime, selectCustomDate}=  require('./calender');
 
 // Native Date picker
 
-const { test, expect } = require('@playwright/test');
-
-const {selectDate, selectTime}=  require('./calender');
 
 test('Native date picker', async ({page})=>{
 
@@ -50,61 +50,20 @@ test('Native date picker', async ({page})=>{
 
 // Custom date picker
 
+
 test('Custom date picker', async ({ page }) => {
 
     await page.goto('https://testautomationpractice.blogspot.com/');
 
-    const year = '2024';
-    const month = 'May';
-    const date = '24';
+    await selectCustomDate(page, 'May', '2024', '24');
 
-    const dateInput = page.locator('#datepicker');
-
-    // Open calendar
-    await dateInput.click();
-
-    const monthYearLocator = page.locator('.ui-datepicker-title');
-
-    const prevButton = page.locator('.ui-icon.ui-icon-circle-triangle-w');
-
-    const requiredDate = month + ' ' + year;
-
-    let monthYearLabel = (await monthYearLocator.innerText())
-        .replace(/\u00A0/g, ' ')
-        .trim();
-
-    let count = 0;
-    const maxAttempts = 60;
-
-    // Navigate to the required month and year
-    while (monthYearLabel !== requiredDate && count < maxAttempts) {
-
-        await prevButton.click();
-
-        monthYearLabel = (await monthYearLocator.innerText())
-            .replace(/\u00A0/g, ' ')
-            .trim();
-
-        count++;
-    }
-
-    // Verify that the required month was reached
-    expect(monthYearLabel).toBe(requiredDate);
-
-    // Select required date
-    const selDate = page.getByRole('link', {
-        name: date,
-        exact: true
-    });
-
-    await selDate.click();
-
-    // Verify selected date
-    await expect(dateInput).toHaveValue('05/24/2024');
+    await expect(page.locator('#datepicker'))
+        .toHaveValue('05/24/2024');
 
 });
 
-// create another file for date function and write only for drop down type date pickers.
+
+
 
 test('datepicker test', async ({page})=>{
     

@@ -69,7 +69,51 @@ console.log(result);
 
 }
 
-module.exports = { selectDate, selectTime };
+
+// custom picker
+async function selectCustomDate(page, month, year, date) {
+
+    const dateInput = page.locator('#datepicker');
+
+    await dateInput.click();
+
+    const monthYearLocator = page.locator('.ui-datepicker-title');
+
+    const prevButton = page.locator('.ui-icon.ui-icon-circle-triangle-w');
+
+    const requiredDate = month + ' ' + year;
+
+    let monthYearLabel = (await monthYearLocator.innerText())
+        .replace(/\u00A0/g, ' ')
+        .trim();
+
+    let count = 0;
+    const maxAttempts = 60;
+
+    while (monthYearLabel !== requiredDate && count < maxAttempts) {
+
+        await prevButton.click();
+
+        monthYearLabel = (await monthYearLocator.innerText())
+            .replace(/\u00A0/g, ' ')
+            .trim();
+
+        count++;
+    }
+
+    if (monthYearLabel !== requiredDate) {
+        throw new Error(`Could not find ${requiredDate} in the calendar`);
+    }
+
+    const selDate = page.getByRole('link', {
+        name: String(date),
+        exact: true
+    });
+
+    await selDate.click();
+}
+
+module.exports = { selectDate, selectTime, selectCustomDate };
 
 
 
